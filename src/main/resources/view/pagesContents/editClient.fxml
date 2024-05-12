@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="editAnchorPane" prefHeight="605.0" prefWidth="1035.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.modelCardControllers.ClientCardController">
+    <children>
+        <VBox fx:id="editFieldsPane" layoutX="50.0" layoutY="45.0" prefHeight="518.0" prefWidth="403.0" style="-fx-background-color: #858585;" AnchorPane.topAnchor="45.0">
+            <children>
+                <Label fx:id="editLabel" alignment="CENTER" contentDisplay="CENTER" style="-fx-alignment: center;" text="Edit Client" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="30.0" left="130.0" right="130.0" top="30.0" />
+                    </VBox.margin>
+                </Label>
+                <Label fx:id="clientIDLabel" text="Client ID" textFill="WHITE">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="clientIdTextField" editable="false" promptText="ID" style="-fx-background-color: #CBCBCB;">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" right="35.0" />
+                    </VBox.margin>
+                </TextField>
+                <Label fx:id="editNameLabel" text="Name" textFill="WHITE">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="editNameTextFiled" promptText="Xiaomi Redmi..." style="-fx-background-color: #CBCBCB;">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" right="35.0" top="3.0" />
+                    </VBox.margin>
+                </TextField>
+                <Label fx:id="editEmailAddressLabel" text="Email address" textFill="WHITE">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="editEmailAddressTextFiled" promptText="3" style="-fx-background-color: #CBCBCB;">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" right="35.0" top="3.0" />
+                    </VBox.margin>
+                </TextField>
+                <Label fx:id="editPhoneNumberLabel" text="Phone Number" textFill="WHITE">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="editPhoneNumberTextField" promptText="30" style="-fx-background-color: #CBCBCB;">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="7.0" left="35.0" right="35.0" top="3.0" />
+                    </VBox.margin>
+                </TextField>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="editSaveButton" layoutX="29.0" layoutY="14.0" mnemonicParsing="false" onAction="#editClientInDataBase" prefHeight="46.0" prefWidth="156.0" style="-fx-background-color: #A34300; -fx-background-radius: 20;" text="Save changes" textFill="WHITE">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Button>
+                        <Button fx:id="deleteProductButton" layoutX="214.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteClientFromDataBase" prefHeight="46.0" prefWidth="156.0" style="-fx-background-color: #A34300; -fx-background-radius: 20;" text="Delete" textFill="WHITE">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+        <ImageView fitHeight="605.0" fitWidth="512.0" layoutX="523.0" pickOnBounds="true">
+            <image>
+                <Image url="@../editClient.jpg" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

@@ -1,0 +1,11 @@
+.clicked-button {
+    -fx-background-color: #000000;
+}
+
+.scroll_pane {
+    -fx-background-color: #ffffff;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0),10,0,0,10);
+}

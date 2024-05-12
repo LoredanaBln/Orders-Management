@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="addClientAnchorPane" prefHeight="605.0" prefWidth="1035.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.modelMethodsControllers.ClientController">
+    <children>
+        <VBox fx:id="clientFieldsPane" layoutX="613.0" layoutY="67.0" prefHeight="471.0" prefWidth="354.0" style="-fx-background-color: #858585;" AnchorPane.topAnchor="67.0">
+            <children>
+                <Label fx:id="addClientLabel" alignment="CENTER" contentDisplay="CENTER" style="-fx-alignment: center;" text="Add client" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="30.0" left="110.0" right="110.0" top="30.0" />
+                    </VBox.margin>
+                </Label>
+                <Label fx:id="clientNameLabel" text="Name" textFill="WHITE">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="clientNameTextField" promptText="John Doe..." style="-fx-background-color: #CBCBCB;">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" right="35.0" top="3.0" />
+                    </VBox.margin>
+                </TextField>
+                <Label fx:id="clientPhoneNumberLabel" text="Phone Number" textFill="WHITE">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="clientPhoneNumberTextField" promptText="076.." style="-fx-background-color: #CBCBCB;">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="15.0" left="35.0" right="35.0" top="3.0" />
+                    </VBox.margin>
+                </TextField>
+                <Label fx:id="clientEmailLabel" text="Email" textFill="WHITE">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="clientEmailTextField" promptText="johnDoe@gmail.com" style="-fx-background-color: #CBCBCB;">
+                    <padding>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="7.0" left="35.0" right="35.0" top="3.0" />
+                    </VBox.margin>
+                </TextField>
+                <Button fx:id="saveClientButton" mnemonicParsing="false" onMouseClicked="#addClient" style="-fx-background-color: #A34300; -fx-background-radius: 20;" text="Save" textFill="WHITE">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="70.0" right="70.0" top="20.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets bottom="10.0" left="80.0" right="80.0" top="10.0" />
+                    </padding>
+                </Button>
+                <Label fx:id="popupLabel" textFill="#fffefe">
+                    <VBox.margin>
+                        <Insets left="70.0" right="70.0" top="15.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Italic" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+        <ImageView fx:id="clientMenuImage" fitHeight="605.0" fitWidth="541.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../client.jpg" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
