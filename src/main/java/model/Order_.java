@@ -1,17 +1,17 @@
 package model;
 
 public class Order_ {
-    private Integer orderId;
+    private Integer order_Id;
     private Integer clientId;
     private Integer productId;
     private Integer productQuantity;
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getOrder_Id() {
+        return order_Id;
     }
 
     public void setOrder_Id(Integer orderId) {
-        this.orderId = orderId;
+        this.order_Id = orderId;
     }
 
     public Integer getClientId() {
@@ -28,10 +28,6 @@ public class Order_ {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
-    }
-
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
     }
 
     public Integer getProductQuantity() {

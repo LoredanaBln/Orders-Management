@@ -40,11 +40,6 @@
 
             @Override
             public String toString() {
-                return "Client{" +
-                        "clientId=" + clientId +
-                        ", name='" + name + '\'' +
-                        ", phoneNumber='" + phoneNumber + '\'' +
-                        ", email='" + email + '\'' +
-                        '}';
+                return name;
             }
         }

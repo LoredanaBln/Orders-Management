@@ -85,6 +85,5 @@ public class ProductCardController {
     public void deleteProductFromDataBase(){
         Product product = productDAO.findById(Integer.parseInt(productIdTextField.getText()));
         productDAO.delete(product);
-
     }
 }

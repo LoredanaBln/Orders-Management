@@ -54,7 +54,7 @@
                         <Insets left="10.0" right="10.0" />
                      </padding>
                         </Button>
-                        <Button fx:id="ordersButtonHome" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: black;" text="Orders" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                        <Button fx:id="ordersButtonHome" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#switchToOrders" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: black;" text="Orders" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                             <HBox.margin>
                                 <Insets bottom="30.0" left="10.0" right="10.0" top="30.0" />
                             </HBox.margin>
