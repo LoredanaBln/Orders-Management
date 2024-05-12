@@ -39,4 +39,9 @@
         public void setPrice(Float price) {
             this.price = price;
         }
+
+        @Override
+        public String toString() {
+            return name +" Quantity=" + quantity +" Price=" + price;
+        }
     }

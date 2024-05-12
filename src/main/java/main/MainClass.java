@@ -16,11 +16,15 @@ public class MainClass {
         Product product = new Product();
         product.setName("Apa Lina");
         productDAO.insert(product);
+        System.out.println(product);
 
 //        ClientDAO clientDAO = new ClientDAO();
 //         Client client = clientDAO.findById(1);
 //         clientDAO.delete(client);
 
         //System.out.println(productDAO.findAll());
+
+//        OrderDAO orderDAO = new OrderDAO();
+//        System.out.println(orderDAO.findById(1));
     }
 }

@@ -1,6 +1,7 @@
     package view;
 
     import dataAccess.ClientDAO;
+    import dataAccess.OrderDAO;
     import dataAccess.ProductDAO;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
@@ -14,9 +15,12 @@
     import javafx.scene.layout.*;
     import javafx.stage.Stage;
     import model.Client;
+    import model.Order_;
     import model.Product;
     import view.modelCardControllers.ClientCardController;
+    import view.modelCardControllers.OrderCardController;
     import view.modelCardControllers.ProductCardController;
+    import view.modelMethodsControllers.OrderController;
 
     import java.io.IOException;
     import java.util.ArrayList;
@@ -59,14 +63,24 @@
         private GridPane clientsGridPane;
 
 
+        @FXML
+        private ScrollPane viewAllOrdersScrollPane;
+        @FXML
+        private GridPane ordersGridPane;
+
+
+
         private static Controller homePageController;
         private static Controller productsPageController;
 
-        private List<Product> listViewAllProducts;
-        private List<Client> listViewAllClients;
+        private static List<Product> listViewAllProducts;
+        private static List<Client> listViewAllClients;
+        private static List<Order_> listViewAllOrders;
 
         private static ProductDAO productDAO = new ProductDAO();
         private static ClientDAO clientDAO = new ClientDAO();
+        private static OrderDAO orderDAO = new OrderDAO();
+
 
 
         public static void setHomePageController(Controller controller) {
@@ -140,12 +154,54 @@
             }
         }
 
+        public void switchToOrders(MouseEvent event) throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("pages/ordersPage.fxml"));
+            root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Orders");
+            stage.show();
+
+            viewAllOrdersScrollPane = (ScrollPane) root.lookup("#viewAllOrdersScrollPane");
+
+            if (viewAllOrdersScrollPane != null) {
+                ordersGridPane = (GridPane) viewAllOrdersScrollPane.getContent();
+                if (ordersGridPane != null) {
+                    addOrders();
+                } else {
+                    System.err.println("viewAllOrdersScrollPane is null. Check your FXML file.");
+                }
+            } else {
+                System.err.println("viewAllOrdersScrollPane is null. Check your FXML file.");
+            }
+        }
+
         public void switchToProductAddPane() throws IOException {
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("pagesContents/addProductPane.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1035, 605);
             Stage stage1 = new Stage();
             stage1.setScene(scene);
             stage1.show();
+        }
+
+        public void switchToAddClient(MouseEvent mouseEvent) throws IOException {
+            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("pagesContents/addClientPane.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1035, 605);
+            Stage stage1 = new Stage();
+            stage1.setScene(scene);
+            stage1.show();
+        }
+
+        public void switchToAddOrder(MouseEvent mouseEvent) throws IOException {
+            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("pagesContents/addOrderPane.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1035, 605);
+            Stage stage1 = new Stage();
+            stage1.setScene(scene);
+            stage1.show();
+            OrderController orderController = new OrderController();
+            orderController.initializeChoiceBoxes(scene);
+
         }
 
         public List<Product> viewAllProducts() {
@@ -156,6 +212,11 @@
         public List<Client> viewAllClients() {
             listViewAllClients = clientDAO.findAll();
             return listViewAllClients;
+        }
+
+        public List<Order_> viewAllOrders() {
+            listViewAllOrders = orderDAO.findAll();
+            return listViewAllOrders;
         }
 
         public void addProducts() {
@@ -220,11 +281,34 @@
             }
         }
 
-        public void switchToAddClient(MouseEvent mouseEvent) throws IOException {
-            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("pagesContents/addClientPane.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1035, 605);
-            Stage stage1 = new Stage();
-            stage1.setScene(scene);
-            stage1.show();
+        public void addOrders() {
+            listViewAllOrders = new ArrayList<>(viewAllOrders());
+            int column = 0;
+            int row = 1;
+            try {
+
+                for (Order_ order : listViewAllOrders) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/view/modelCards/orderCard.fxml"));
+                    AnchorPane cardBox = fxmlLoader.load();
+                    OrderCardController orderCardController = fxmlLoader.getController();
+                    orderCardController.setOrderData(order);
+
+                    if (column == 1) {
+                        column = 0;
+                        ++row;
+                    }
+                    ordersGridPane.add(cardBox, column++, row);
+                    GridPane.setMargin(cardBox, new Insets(15, 25, 15, 25));
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public void refreshOrders(MouseEvent event) throws IOException {
+            ordersGridPane.getChildren().clear();
+            addOrders();
         }
     }
