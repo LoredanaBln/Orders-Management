@@ -76,21 +76,13 @@
                         <Font size="17.0" />
                     </font>
                     <VBox.margin>
-                        <Insets left="80.0" right="80.0" top="20.0" />
+                        <Insets bottom="10.0" left="80.0" right="80.0" top="20.0" />
                     </VBox.margin>
                     <padding>
                         <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
                     </padding>
                 </Button>
-            <Label text="Label" textFill="#d70000">
-               <VBox.margin>
-                  <Insets left="70.0" right="70.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="System Italic" size="18.0" />
-               </font>
-            </Label>
-                <Label fx:id="popupLabel" textFill="#fffefe">
+                <Label fx:id="popupLabel" textFill="WHITE">
                     <VBox.margin>
                         <Insets left="70.0" right="70.0" top="15.0" />
                     </VBox.margin>
@@ -102,7 +94,7 @@
         </VBox>
         <ImageView fx:id="clientMenuImage" fitHeight="605.0" fitWidth="541.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../order.jpg" />
+                <Image url="@../images/order.jpg" />
             </image>
         </ImageView>
     </children>

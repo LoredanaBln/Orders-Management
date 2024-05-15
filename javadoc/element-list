@@ -1,0 +1,8 @@
+module:com.example.hw3
+bussiness.validators
+dataAccess
+databaseConnection
+model
+view
+view.modelCardControllers
+view.modelMethodsControllers

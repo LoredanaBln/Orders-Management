@@ -1,22 +1,25 @@
 package view.modelMethodsControllers;
 
+import bussiness.validators.QuantityValidator;
+import dataAccess.BillDAO;
 import dataAccess.ClientDAO;
 import dataAccess.OrderDAO;
 import dataAccess.ProductDAO;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.paint.Color;
+import model.Bill;
 import model.Client;
 import model.Order_;
 import model.Product;
-import view.Application;
+import view.MessagePrinter;
 
-import java.io.IOException;
-
+/**
+ * Controller class for placing orders.
+ */
 public class OrderController {
 
     @FXML
@@ -26,14 +29,15 @@ public class OrderController {
     @FXML
     private TextField orderQuantityTextField;
     @FXML
-    private TextField orderIDTextFiled;
-
+    private Label popupLabel;
 
     private  ProductDAO productDAO = new ProductDAO();
     private static ClientDAO clientDAO = new ClientDAO();
-    private static OrderDAO orderDAO = new OrderDAO();
 
-
+    /**
+     * Initializes the choice boxes with data from the database.
+     * @param scene The scene in which the choice boxes are located.
+     */
     public void initializeChoiceBoxes(Scene scene) {
         clientChoiceBox = (ChoiceBox<Client>) scene.lookup("#clientChoiceBox");
         productChoiceBox = (ChoiceBox<Product>) scene.lookup("#productChoiceBox");
@@ -46,12 +50,34 @@ public class OrderController {
         }
     }
 
+    /**
+     * Places a new order with the selected client and product.
+     * Checks if the quantity is valid and updates the database.
+     */
     public void placeOrder(){
         Order_ order = new Order_();
         order.setClientId(clientChoiceBox.getValue().getClientId());
         order.setProductId(productChoiceBox.getValue().getProductId());
 
-        OrderDAO orderDAO = new OrderDAO();
-        orderDAO.insert(order);
+        Integer quantity = Integer.valueOf(orderQuantityTextField.getText());
+        QuantityValidator quantityValidator = new QuantityValidator();
+        if(!quantityValidator.isValid(quantity) || (quantity > productChoiceBox.getValue().getQuantity())){
+            popupLabel.setTextFill(Color.RED);
+            new MessagePrinter().showMessage("Invalid quantity!", popupLabel);
+        }
+        else {
+            order.setProductQuantity(quantity);
+            OrderDAO orderDAO = new OrderDAO();
+            orderDAO.insert(order);
+
+            Client client = clientChoiceBox.getValue();
+            Product product = productChoiceBox.getValue();
+
+            Bill bill = new Bill(order.getOrder_Id(), client.getName(), client.getEmail(), client.getPhoneNumber(), product.getName(), order.getProductQuantity());
+            BillDAO billDAO = new BillDAO();
+            billDAO.insert(bill);
+            popupLabel.setTextFill(Color.WHITE);
+            new MessagePrinter().showMessage("Order added successfully!", popupLabel);
+        }
     }
 }

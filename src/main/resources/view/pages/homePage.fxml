@@ -16,7 +16,7 @@
             <children>
                 <ImageView fitHeight="607.0" fitWidth="618.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                <image>
-                  <Image url="@../young-man-working-warehouse-with-boxes.jpg" />
+                  <Image url="@../images/young-man-working-warehouse-with-boxes.jpg" />
                </image></ImageView>
             </children>
         </VBox>

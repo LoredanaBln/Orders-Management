@@ -30,17 +30,22 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="refreshButton" layoutX="877.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#refreshOrders" prefHeight="35.0" prefWidth="50.0" style="-fx-background-radius: 2; -fx-background-color: #A34300;" textFill="WHITE">
+            <Button fx:id="refreshButton" layoutX="802.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#refreshOrders" prefHeight="35.0" prefWidth="50.0" style="-fx-background-radius: 2; -fx-background-color: #A34300;" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="30.0" onMouseClicked="#refreshOrders" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="refresh" fitHeight="22.0" fitWidth="30.0" onMouseClicked="#refreshOrders" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../refresh.png" />
+                        <Image url="@../images/refresh.png" />
                      </image>
                   </ImageView>
                </graphic>
+            </Button>
+            <Button fx:id="billsButton" layoutX="860.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#switchToBills" prefHeight="35.0" prefWidth="75.0" style="-fx-background-radius: 2; -fx-background-color: #A34300;" text="Bills" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
             </Button>
             </children>
         </AnchorPane>
@@ -56,7 +61,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="productsButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 2; -fx-background-color: black;" text="Products" textFill="WHITE">
+                        <Button fx:id="productsButton" mnemonicParsing="false" onMouseClicked="#switchToProducts" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 2; -fx-background-color: black;" text="Products" textFill="WHITE">
                             <HBox.margin>
                                 <Insets left="10.0" right="10.0" top="20.0" />
                             </HBox.margin>
@@ -86,7 +91,7 @@
         </AnchorPane>
         <ImageView fx:id="boxesImage" fitHeight="570.0" fitWidth="434.0" layoutY="150.0" pickOnBounds="true">
             <image>
-                <Image url="@../empty-closed-boxes-white.png" />
+                <Image url="@../images/empty-closed-boxes-white.png" />
             </image>
         </ImageView>
         <Label layoutX="77.0" layoutY="106.0" text="Order Management">

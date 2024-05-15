@@ -19,7 +19,7 @@
                         <Rectangle2D />
                     </viewport>
                     <image>
-                        <Image url="@../addProduct.png" />
+                        <Image url="@../images/addProduct.png" />
                     </image>
                 </ImageView>
             </children>
