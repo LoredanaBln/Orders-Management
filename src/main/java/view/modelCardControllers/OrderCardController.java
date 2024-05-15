@@ -10,16 +10,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Client;
 import model.Order_;
 import model.Product;
 import view.Application;
-import view.Controller;
 
 import java.io.IOException;
 
+/**
+ * Controller class for managing order information displayed on a card in the UI.
+ */
 public class OrderCardController {
     @FXML
     private Label clientEmailLabel;
@@ -36,7 +37,6 @@ public class OrderCardController {
     @FXML
     private Label productQuantityLabel;
 
-
     @FXML
     private ChoiceBox<Client> editClientChoiceBox;
     @FXML
@@ -50,7 +50,10 @@ public class OrderCardController {
     private static ProductDAO productDAO = new ProductDAO();
     private static OrderDAO orderDAO = new OrderDAO();
 
-
+    /**
+     * Sets the data of the order in the UI.
+     * @param order The order object containing the data to be displayed.
+     */
     public void setOrderData(Order_ order){
         Client client = clientDAO.findById(order.getClientId());
         clientEmailLabel.setText(client.getEmail());
@@ -65,6 +68,9 @@ public class OrderCardController {
         orderIdLabel.setText(String.valueOf(order.getOrder_Id()));
     }
 
+    /**
+     * Populates the edit view with data for editing the order.
+     */
     public void getDataForEditPage(){
         editClientChoiceBox.setValue(clientDAO.findById(Integer.parseInt(clientIdLabel.getText())));
         editProductChoiceBox.setValue(productDAO.findById(Integer.parseInt(productIdLabel.getText())));
@@ -75,6 +81,11 @@ public class OrderCardController {
 
         orderIDTextField.setText(orderIdLabel.getText());
     }
+
+    /**
+     * Opens a new window for editing order information.
+     * @throws IOException If an I  O error occurs.
+     */
     public void editOrder() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("pagesContents/editOrderPane.fxml"));
         Parent root = fxmlLoader.load();
@@ -90,17 +101,20 @@ public class OrderCardController {
         getDataForEditPage();
     }
 
+    /**
+     * Updates order information in the database based on changes made in the edit view.
+     */
     public void updateOrder(){
         Order_ order = orderDAO.findById(Integer.parseInt(orderIDTextField.getText()));
-        System.out.println(order);
-
         order.setProductId(editProductChoiceBox.getValue().getProductId());
         order.setClientId(editClientChoiceBox.getValue().getClientId());
         order.setProductQuantity(Integer.valueOf(editOrderQuantityTextField.getText()));
-
         orderDAO.update(order);
     }
 
+    /**
+     * Deletes the order from the database.
+     */
     public void deleteOrderFromDataBase(){
         Order_ order = orderDAO.findById(Integer.parseInt(orderIdLabel.getText()));
         orderDAO.delete(order);

@@ -111,7 +111,7 @@
       </VBox>
       <ImageView fx:id="productMenuImage" fitHeight="605.0" fitWidth="541.0" pickOnBounds="true">
          <image>
-            <Image url="@../close-up-warehouse-view.jpg" />
+            <Image url="@../images/close-up-warehouse-view.jpg" />
          </image>
       </ImageView>
    </children>

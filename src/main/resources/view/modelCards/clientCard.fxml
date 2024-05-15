@@ -18,7 +18,7 @@
                         <Insets left="130.0" top="2.0" />
                     </VBox.margin>
                     <image>
-                        <Image url="@../icons8-edit-32.png" />
+                        <Image url="@../images/icons8-edit-32.png" />
                     </image>
                 </ImageView>
                 <ImageView fx:id="clientImage" fitHeight="109.0" fitWidth="123.0" pickOnBounds="true" style="-fx-translate-x: 5;">
@@ -29,7 +29,7 @@
                         <Rectangle2D />
                     </viewport>
                     <image>
-                        <Image url="@../man1.png" />
+                        <Image url="@../images/man1.png" />
                     </image>
                 </ImageView>
                 <Label fx:id="clientName" contentDisplay="CENTER" prefHeight="17.0" prefWidth="187.0" style="-fx-position-shape: center;" text="John Doe">

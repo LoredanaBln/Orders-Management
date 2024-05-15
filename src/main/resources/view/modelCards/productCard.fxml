@@ -19,7 +19,7 @@
                   <Insets left="130.0" top="2.0" />
                </VBox.margin>
                <image>
-                  <Image url="@../icons8-edit-32.png" />
+                  <Image url="@../images/icons8-edit-32.png" />
                </image>
             </ImageView>
             <ImageView fx:id="productImage" fitHeight="90.0" fitWidth="101.0" pickOnBounds="true" style="-fx-translate-x: 5;">
@@ -30,7 +30,7 @@
                   <Rectangle2D />
                </viewport>
                <image>
-                  <Image url="@../45746666176542.jpg" />
+                  <Image url="@../images/45746666176542.jpg" />
                </image>
             </ImageView>
             <Label fx:id="productName" prefHeight="17.0" prefWidth="187.0" text="Name">

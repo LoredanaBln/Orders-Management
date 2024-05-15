@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="editAnchorPane" prefHeight="605.0" prefWidth="1035.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.modelCardControllers.ProductCardController">
     <children>
-        <VBox fx:id="editFieldsPane" layoutX="50.0" layoutY="45.0" prefHeight="518.0" prefWidth="403.0" style="-fx-background-color: #858585;" AnchorPane.topAnchor="45.0">
+        <VBox fx:id="editFieldsPane" layoutX="52.0" layoutY="30.0" prefHeight="548.0" prefWidth="403.0" style="-fx-background-color: #858585;" AnchorPane.topAnchor="30.0">
             <children>
                 <Label fx:id="editLabel" alignment="CENTER" contentDisplay="CENTER" style="-fx-alignment: center;" text="Edit Product" textFill="WHITE">
                     <font>
@@ -110,7 +110,7 @@
                         <Insets bottom="7.0" left="35.0" right="35.0" top="3.0" />
                     </VBox.margin>
                 </TextField>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane prefHeight="126.0" prefWidth="403.0">
                <children>
                       <Button fx:id="editSaveButton" layoutX="29.0" layoutY="14.0" mnemonicParsing="false" onAction="#editProductInDataBase" prefHeight="46.0" prefWidth="156.0" style="-fx-background-color: #A34300; -fx-background-radius: 20;" text="Save changes" textFill="WHITE">
                           <font>
@@ -128,13 +128,18 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Button>
+                  <Label fx:id="popupLabel" layoutX="73.0" layoutY="70.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Italic" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             </children>
         </VBox>
       <ImageView fitHeight="608.0" fitWidth="512.0" layoutX="523.0" pickOnBounds="true">
          <image>
-            <Image url="@../male-warehouse-worker-communicating-with-someone-walkietalkie-while-standing-shelfs-distribution-warehouse.jpg" />
+            <Image url="@../images/male-warehouse-worker-communicating-with-someone-walkietalkie-while-standing-shelfs-distribution-warehouse.jpg" />
          </image>
       </ImageView>
     </children>

@@ -112,19 +112,20 @@
                         <Font name="System Italic" size="18.0" />
                     </font>
                 </Label>
+            <AnchorPane prefHeight="200.0" prefWidth="354.0" />
                 <Label fx:id="popupLabel" textFill="#fffefe">
                     <VBox.margin>
                         <Insets left="70.0" right="70.0" top="15.0" />
                     </VBox.margin>
                     <font>
-                        <Font name="System Italic" size="18.0" />
+                        <Font name="System Italic" size="16.0" />
                     </font>
                 </Label>
             </children>
         </VBox>
         <ImageView fx:id="clientMenuImage" fitHeight="605.0" fitWidth="541.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../order.jpg" />
+                <Image url="@../images/order.jpg" />
             </image>
         </ImageView>
     </children>

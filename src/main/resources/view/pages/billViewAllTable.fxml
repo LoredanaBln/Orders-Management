@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="billsPage" prefHeight="755.0" prefWidth="1255.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller">
+    <children>
+        <AnchorPane layoutX="64.0" layoutY="93.0" prefHeight="570.0" prefWidth="1133.0" style="-fx-background-color: white;">
+            <children>
+                <Label layoutX="14.0" layoutY="1.0" text="Order Management">
+                    <font>
+                        <Font name="System Bold" size="17.0" />
+                    </font>
+                </Label>
+                <TableView fx:id="billsTableView" editable="true" layoutX="37.0" layoutY="59.0" prefHeight="457.0" prefWidth="1060.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

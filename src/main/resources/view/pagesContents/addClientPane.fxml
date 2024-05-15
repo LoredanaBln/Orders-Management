@@ -111,7 +111,7 @@
         </VBox>
         <ImageView fx:id="clientMenuImage" fitHeight="605.0" fitWidth="541.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../client.jpg" />
+                <Image url="@../images/client.jpg" />
             </image>
         </ImageView>
     </children>

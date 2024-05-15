@@ -1,6 +1,6 @@
 package dataAccess;
 
-import bussiness.DatabaseConnection.ConnectionClass;
+import databaseConnection.ConnectionClass;
 
 import java.lang.reflect.*;
 import java.sql.*;
@@ -13,19 +13,30 @@ import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.ParameterizedType;
 
-
+/**
+ * A class providing CRUD operations for data access objects.
+ * @param <T>
+ */
 
 public class AbstractDAO<T> {
     protected static final Logger LOGGER = Logger.getLogger(AbstractDAO.class.getName());
 
     private final Class<T> type;
 
+    /**
+     *Constructs an AbstractDAO object.
+     */
     @SuppressWarnings("unchecked")
     public AbstractDAO() {
         this.type = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
     }
 
+    /**
+     * Creates a SELECT query for a specific field.
+     * @param field The field to search for.
+     * @return The generated SELECT query as a string.
+     */
     private String createSelectQuery(String field) {
         StringBuilder sb = new StringBuilder();
         sb.append("SELECT ");
@@ -36,6 +47,10 @@ public class AbstractDAO<T> {
         return sb.toString();
     }
 
+    /**
+     * Retrieves all entities of type T from the database.
+     * @return A list of all entities retrieved from the database.
+     */
     public List<T> findAll() {
         List<T> resultList = new ArrayList<>();
         String query = "SELECT * FROM " + type.getSimpleName();
@@ -52,7 +67,11 @@ public class AbstractDAO<T> {
         return resultList;
     }
 
-
+    /**
+     * Finds an entity by its ID.
+     * @param id The ID of the entity to retrieve.
+     * @return The entity with the specified ID, or null if no matching entity is found.
+     */
     public T findById(int id) {
         //using parametrizedType to get the actual type from the caller DAO
         ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
@@ -75,6 +94,17 @@ public class AbstractDAO<T> {
         return null;
     }
 
+    /**
+     *<p>
+     * This method searches for a constructor with no parameters, iterates through the resultSet and builds instances of type T
+     * using the constructor found earlier, it then invokes the setter method of the class, it then adds the object created to the
+     * list that has to be returned.
+     * <p>
+     * Creates objects of type T from a ResultSet.
+     * @param resultSet The ResultSet containing data to be converted into objects.
+     * @return A list of objects of type T.
+     * @throws IntrospectionException If an introspection error occurs.
+     */
     private List<T> createObjects(ResultSet resultSet) throws IntrospectionException {
         List<T> list = new ArrayList<T>();
         Constructor[] ctors = type.getDeclaredConstructors();
@@ -113,6 +143,12 @@ public class AbstractDAO<T> {
         return list;
     }
 
+    /**
+     * This method acts like a setter method for the object T's ID.
+     * Sets the ID of an object.
+     * @param object The object whose ID is to be set.
+     * @param id The ID value to set.
+     */
     protected void setId(T object, Integer id) {
         try {
             Method setIdMethod = object.getClass().getMethod("set" + object.getClass().getSimpleName() + "Id", Integer.class);
@@ -122,6 +158,12 @@ public class AbstractDAO<T> {
         }
     }
 
+    /**
+     * Inserts a new record into the database.
+     * @param t The object representing the record to be inserted.
+     * @return The object representing the inserted record, with any generated ID set.
+     * @throws SQLException If an SQL exception occurs during the insertion process.
+     */
     public T insert(T t) {
         try (Connection connection = ConnectionClass.getConnection();
              PreparedStatement statement = createInsertStatement(connection, t)) {
@@ -146,6 +188,14 @@ public class AbstractDAO<T> {
         return t;
     }
 
+    /**
+     * Dynamically creates an SQL INSERT query for the given object.
+     * @param connection The database connection.
+     * @param t The object for which the query is built.
+     * @return The prepared statement for the INSERT query.
+     * @throws SQLException If a SQL exception occurs.
+     *
+     */
     private PreparedStatement createInsertStatement(Connection connection, T t) throws SQLException {
         StringBuilder queryBuilder = new StringBuilder("INSERT INTO ");
         queryBuilder.append(type.getSimpleName());
@@ -191,7 +241,12 @@ public class AbstractDAO<T> {
         return statement;
     }
 
-
+    /**
+     * Updates an object in the database.
+     * @param t The object to be updated.
+     * @return The object given as parameter.
+     *
+     */
     public T update(T t) {
         try (Connection connection = ConnectionClass.getConnection()) {
             String tableName = type.getSimpleName();
@@ -233,6 +288,11 @@ public class AbstractDAO<T> {
         return t;
     }
 
+    /**
+     * Deletes an object from the database.
+     * @param t The object to be deleted.
+     * @return The object given as parameter.
+     */
     public T delete(T t) {
         try (Connection connection = ConnectionClass.getConnection()) {
             String tableName = type.getSimpleName();

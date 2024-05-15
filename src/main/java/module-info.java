@@ -6,15 +6,15 @@ module com.example.hw3 {
     requires java.sql;
     requires mysql.connector.j;
     requires java.desktop;
+    requires docraptor;
 
     opens view to javafx.fxml;
     exports view;
     exports view.modelCardControllers;
     opens view.modelCardControllers to javafx.fxml;
-    opens view.modelPageController to javafx.fxml;
-    exports view.modelPageController;
 
     exports view.modelMethodsControllers;
     opens view.modelMethodsControllers to javafx.fxml;
+    opens model;
 
 }

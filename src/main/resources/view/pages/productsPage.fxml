@@ -16,7 +16,7 @@
    <children>
       <AnchorPane layoutX="64.0" layoutY="93.0" prefHeight="570.0" prefWidth="1133.0" style="-fx-background-color: white;">
          <children>
-            <ScrollPane fx:id="viewAllScrollPane" layoutX="500.0" layoutY="29.0" prefHeight="494.0" prefWidth="594.0" style="-fx-border-width: 2;" styleClass="scroll_pane" stylesheets="@../styles/styles.css">
+            <ScrollPane fx:id="viewAllScrollPane" layoutX="500.0" layoutY="83.0" prefHeight="457.0" prefWidth="594.0" style="-fx-border-width: 2;" styleClass="scroll_pane" stylesheets="@../styles/styles.css">
                <content>
                   <GridPane fx:id="productsGridPane">
                     <rowConstraints>
@@ -25,6 +25,18 @@
                   </GridPane>
                </content>
             </ScrollPane>
+            <Button fx:id="refreshButton" layoutX="1044.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#refreshProducts" prefHeight="35.0" prefWidth="50.0" style="-fx-background-radius: 2; -fx-background-color: #A34300;" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="30.0" onMouseClicked="#refreshProducts" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="menuButtonsPane" prefHeight="78.0" prefWidth="1260.0" style="-fx-background-color: #000000;">
@@ -69,7 +81,7 @@
       </AnchorPane>
       <ImageView fitHeight="697.0" fitWidth="499.0" layoutX="44.0" layoutY="40.0" pickOnBounds="true">
          <image>
-            <Image url="@../friendly-deliveryman-showing-smartphone.png" />
+            <Image url="@../images/friendly-deliveryman-showing-smartphone.png" />
          </image>
       </ImageView>
       <Label layoutX="77.0" layoutY="106.0" text="Order Management">

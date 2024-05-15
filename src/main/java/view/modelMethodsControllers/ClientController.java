@@ -7,8 +7,11 @@ import model.Client;
 import view.MessagePrinter;
 import javafx.scene.control.Label;
 
-
+/**
+ * Controller class for adding new clients.
+ */
 public class ClientController {
+
     @FXML
     private TextField clientEmailTextField;
 
@@ -21,7 +24,9 @@ public class ClientController {
     @FXML
     private Label popupLabel;
 
-
+    /**
+     * Adds a new client to the database using the provided information.
+     */
     public void addClient(){
         ClientDAO clientDAO = new ClientDAO();
         Client client = new Client();
