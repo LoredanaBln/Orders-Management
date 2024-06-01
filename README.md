@@ -1,4 +1,4 @@
-# Orders Management Java Application ✈️
+# Orders Management Java Application 📦🚛👷‍♂️
 Java application designed to simulate the process of handling orders in a warehouse with *JavaFX* UI/UX, *JAVA* backend and a local *mySQL* database.
 
 ## Features
